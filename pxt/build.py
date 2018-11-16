@@ -47,7 +47,7 @@ def everything(root_dir: str=''):
     module_names = [f for f in module_names if os.path.abspath(f) != caller_file]
 
     # find all files in which pxt is imported and might therefore be used
-    module_names = [f for f in module_names if 'import pxt' in open(f).read()]
+    module_names = [f for f in module_names if 'import pxt' in open(f, encoding='utf-8').read()]
     module_names = [os.path.dirname(f) if os.path.split(f)[1] == '__init__.py' else os.path.splitext(f)[0]
                     for f in module_names]
 

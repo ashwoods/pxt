@@ -28,7 +28,7 @@ def get_source_list(filename: str, include_folders: List[str], find_function: Ca
     """
     def gather_include_files(file, existing_include_files=set()):
         # read the content of the file
-        with open(file, 'r') as file_object:
+        with open(file, 'r', encoding='utf-8') as file_object:
             content = file_object.read()
             # use the find function to find all used (included) files
             for include_file in find_function(content):
@@ -143,7 +143,7 @@ def is_called_as_decorator() -> bool:
         return False
 
     # read the lines up to the parent frame position in the file
-    with open(parent.f_code.co_filename, 'r') as fp:
+    with open(parent.f_code.co_filename, 'r', encoding='utf-8') as fp:
         lines = fp.readlines()[:parent.f_lineno]
 
     # Parse the line for a function and search for the "@"
